@@ -199,8 +199,12 @@
     <script>
         (function () {
             var storageKey = "theme";
-            var className = "theme-dark";
             var button = document.getElementById("theme-toggle");
+            var root = document.documentElement;
+
+            if (!button) {
+                return;
+            }
 
             function setPressed(isDark) {
                 button.setAttribute("aria-pressed", String(isDark));
@@ -208,11 +212,17 @@
             }
 
             function applyTheme(isDark) {
-                document.body.classList.toggle(className, isDark);
+                root.setAttribute("data-theme", isDark ? "dark" : "light");
                 setPressed(isDark);
             }
 
-            var stored = localStorage.getItem(storageKey);
+            var stored = null;
+            try {
+                stored = localStorage.getItem(storageKey);
+            } catch (err) {
+                stored = null;
+            }
+
             if (stored === "dark") {
                 applyTheme(true);
             } else if (stored === "light") {
@@ -222,10 +232,14 @@
             }
 
             button.addEventListener("click", function () {
-                var isDark = document.body.classList.contains(className);
+                var isDark = root.getAttribute("data-theme") === "dark";
                 var next = !isDark;
                 applyTheme(next);
-                localStorage.setItem(storageKey, next ? "dark" : "light");
+                try {
+                    localStorage.setItem(storageKey, next ? "dark" : "light");
+                } catch (err) {
+                    return;
+                }
             });
         })();
     </script>

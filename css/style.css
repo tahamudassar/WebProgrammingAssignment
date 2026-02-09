@@ -15,6 +15,16 @@
     --accent-color: #e74c3c;
 }
 
+:root[data-theme="light"] {
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --text-color: #333;
+    --light-bg: #f8f9fa;
+    --white: #ffffff;
+    --border-color: #e0e0e0;
+    --accent-color: #e74c3c;
+}
+
 @media (prefers-color-scheme: dark) {
     :root {
         --primary-color: #dfe7f1;
@@ -27,7 +37,7 @@
     }
 }
 
-body.theme-dark {
+:root[data-theme="dark"] {
     --primary-color: #dfe7f1;
     --secondary-color: #8ab4f8;
     --text-color: #e6e6e6;
