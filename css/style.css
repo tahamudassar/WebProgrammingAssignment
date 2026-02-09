@@ -15,6 +15,18 @@
     --accent-color: #e74c3c;
 }
 
+@media (prefers-color-scheme: dark) {
+    :root {
+        --primary-color: #dfe7f1;
+        --secondary-color: #8ab4f8;
+        --text-color: #e6e6e6;
+        --light-bg: #111316;
+        --white: #1b1f24;
+        --border-color: #2a2f36;
+        --accent-color: #ff8a7a;
+    }
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
