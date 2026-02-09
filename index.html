@@ -10,6 +10,9 @@
     <!-- Header -->
     <header>
         <h1>Taha Mudassar</h1>
+        <button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false" aria-label="Toggle dark mode">
+            Dark mode
+        </button>
         <div class="contact-info">
             <p>📧 tahamudasser1@gmail.com</p>
             <p>📱 +92 302 8419820</p>
@@ -193,5 +196,38 @@
     <footer>
         <p>&copy; 2026 Taha Mudassar. All rights reserved.</p>
     </footer>
+    <script>
+        (function () {
+            var storageKey = "theme";
+            var className = "theme-dark";
+            var button = document.getElementById("theme-toggle");
+
+            function setPressed(isDark) {
+                button.setAttribute("aria-pressed", String(isDark));
+                button.textContent = isDark ? "Light mode" : "Dark mode";
+            }
+
+            function applyTheme(isDark) {
+                document.body.classList.toggle(className, isDark);
+                setPressed(isDark);
+            }
+
+            var stored = localStorage.getItem(storageKey);
+            if (stored === "dark") {
+                applyTheme(true);
+            } else if (stored === "light") {
+                applyTheme(false);
+            } else {
+                setPressed(window.matchMedia("(prefers-color-scheme: dark)").matches);
+            }
+
+            button.addEventListener("click", function () {
+                var isDark = document.body.classList.contains(className);
+                var next = !isDark;
+                applyTheme(next);
+                localStorage.setItem(storageKey, next ? "dark" : "light");
+            });
+        })();
+    </script>
 </body>
 </html>

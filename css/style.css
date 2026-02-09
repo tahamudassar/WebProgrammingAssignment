@@ -27,6 +27,16 @@
     }
 }
 
+body.theme-dark {
+    --primary-color: #dfe7f1;
+    --secondary-color: #8ab4f8;
+    --text-color: #e6e6e6;
+    --light-bg: #111316;
+    --white: #1b1f24;
+    --border-color: #2a2f36;
+    --accent-color: #ff8a7a;
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
@@ -45,6 +55,20 @@ header {
 header h1 {
     font-size: 2.5rem;
     margin-bottom: 1rem;
+}
+
+.theme-toggle {
+    background-color: transparent;
+    color: var(--white);
+    border: 1px solid var(--white);
+    border-radius: 999px;
+    padding: 0.4rem 0.9rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.theme-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.12);
 }
 
 .contact-info {
